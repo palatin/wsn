@@ -5,6 +5,15 @@ public class NodeLink {
     private Node link;
     private float distance;
 
+    static float linkMemory = 10;
+
+    public NodeLink() {}
+
+    public NodeLink(Node link, float distance) {
+        this.link = link;
+        this.distance = distance;
+    }
+
     public Node getLink() {
         return link;
     }
@@ -26,5 +35,9 @@ public class NodeLink {
         if (getClass() != obj.getClass())
             return false;
         return ((NodeLink) obj).link == link;
+    }
+
+    public NodeLink clone() {
+        return new NodeLink(link, distance);
     }
 }

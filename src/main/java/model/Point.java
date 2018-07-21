@@ -48,7 +48,7 @@ public class Point {
         return this;
     }
 
-    public Point copy() {
+    public Point clone() {
         return new Point(x, y, z);
     }
 }
