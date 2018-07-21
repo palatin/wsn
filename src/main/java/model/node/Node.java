@@ -1,6 +1,8 @@
 package model.node;
 
 import model.Point;
+import model.data.Data;
+import model.node.transmitter.Transmitter;
 
 import java.util.List;
 
@@ -10,15 +12,17 @@ public class Node {
     private Point location;
     private double energy = 0;
     private List<NodeLink> links;
-    private float memoryLimit;
-    private float currentMemory = 0;
+    private long memoryLimit;
+    private long currentMemory = 0;
     private boolean alive = true;
+    private final Transmitter transmitter;
 
-    public Node(long id, Point location, double energy, float memoryLimit) {
+    public Node(long id, Point location, double energy, long memoryLimit, Transmitter transmitter) {
         this.id = id;
         this.location = location;
         this.energy = energy;
         this.memoryLimit = memoryLimit;
+        this.transmitter = transmitter;
     }
 
     public long getId() {
@@ -72,13 +76,21 @@ public class Node {
         currentMemory -= NodeLink.linkMemory;
     }
 
+    public boolean sendData(Data data, Node receiver) {
+        return spendEnergy(transmitter.sendData(data, this, receiver));
+    }
+
+    public boolean receiveData(Data data) {
+        return spendEnergy(transmitter.receiveData(data, this)); //TODO receive data
+    }
+
     private boolean spendEnergy(double energy) {
         boolean enoughEnergy = getEnergy() >= energy;
         setEnergy(enoughEnergy ? getEnergy() - energy : 0);
         return enoughEnergy;
     }
 
-    private boolean canStore(float memory) {
+    private boolean canStore(long memory) {
         return currentMemory + memory <= memoryLimit;
     }
 }

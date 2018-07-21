@@ -5,7 +5,7 @@ public class NodeLink {
     private Node link;
     private float distance;
 
-    static float linkMemory = 10;
+    static long linkMemory = 10;
 
     public NodeLink() {}
 
