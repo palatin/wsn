@@ -12,6 +12,12 @@ public class Point {
         this.z = z;
     }
 
+    public Point(Point point) {
+        this.x = point.x;
+        this.y = point.y;
+        this.z = point.z;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (getClass() != obj.getClass())
@@ -48,7 +54,8 @@ public class Point {
         return this;
     }
 
-    public Point clone() {
+
+    public Point copy() {
         return new Point(x, y, z);
     }
 }

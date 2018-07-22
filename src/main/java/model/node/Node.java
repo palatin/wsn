@@ -30,7 +30,7 @@ public class Node {
     }
 
     public Point getLocation() {
-        return location.clone();
+        return location.copy();
     }
 
     public double getEnergy() {
