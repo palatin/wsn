@@ -2,11 +2,11 @@ package model;
 
 public class Point {
 
-    public int x,y,z;
+    public float x,y,z;
 
     public Point() {}
 
-    public Point(int x, int y, int z) {
+    public Point(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;

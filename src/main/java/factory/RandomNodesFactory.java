@@ -32,9 +32,9 @@ public class RandomNodesFactory implements NodesFactory {
         List<Integer> y = null;
         List<Integer> z = null;
         try {
-            x = Random.uniqueRandomIntsInRange(from.x, to.x, count);
-            y = Random.uniqueRandomIntsInRange(from.y, to.y, count);
-            z = Random.uniqueRandomIntsInRange(from.z, to.z, count);
+            x = Random.uniqueRandomIntsInRange((int)from.x, (int)to.x, count);
+            y = Random.uniqueRandomIntsInRange((int)from.y, (int)to.y, count);
+            z = Random.uniqueRandomIntsInRange((int)from.z, (int)to.z, count);
         } catch (InvalidRandomRangeException e) {
             throw new InvalidFactoryArgumentsException(e);
         }
