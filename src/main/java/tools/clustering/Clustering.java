@@ -15,11 +15,10 @@ import java.util.List;
 public abstract class Clustering {
 
     private Geometry geometry;
-    protected Clusters clusters;
 
-    public Clustering(Geometry geometry, int clusterCounts) {
+
+    public Clustering(Geometry geometry) {
         this.geometry = geometry;
-        clusters = new Clusters(clusterCounts);
     }
 
     protected Pair<Integer, Double> findNearestPoint(Point center, List<Point> points) {
@@ -28,7 +27,7 @@ public abstract class Clustering {
         return ArrayHelper.getSmallestElement(distances);
     }
 
-    protected void assignNodesToClusters(List<Point> centers, List<Node> nodes) {
+    protected void assignNodesToClusters(List<Point> centers, Clusters clusters, List<Node> nodes) {
 
         for (int i = 0; i < nodes.size(); i++) {
             Pair<Integer, Double> nearest = findNearestPoint(nodes.get(i).getLocation(), centers);

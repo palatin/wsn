@@ -26,6 +26,8 @@ public class Random {
         return ThreadLocalRandom.current().nextFloat() * (max - min) + min;
     }
 
+
+
     public static List<Long> uniqueRandomLongsInRange(long min, long max, int count) {
 
         List<Long> res = LongStream.range(min, max).boxed().collect(Collectors.toList());
