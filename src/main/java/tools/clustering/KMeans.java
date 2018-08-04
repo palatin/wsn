@@ -13,8 +13,11 @@ import java.util.List;
 
 public class KMeans extends Clustering {
 
+    private Clusters clusters;
+
     public KMeans(Geometry geometry, int clusterCounts) {
-        super(geometry, clusterCounts);
+        super(geometry);
+        clusters = new Clusters(clusterCounts);
     }
 
     public Clusters buildClusters(List<Node> nodes) throws InvalidClusteringArgumentsException {
@@ -31,7 +34,7 @@ public class KMeans extends Clustering {
 
         while(!stop) {
             clusters.clearClusters();
-            assignNodesToClusters(centers, nodes);
+            assignNodesToClusters(centers, clusters, nodes);
             stop = calculateNewCenters(clusters, centers, nodes);
         }
 
@@ -42,7 +45,7 @@ public class KMeans extends Clustering {
         }
 
         clusters.clearClusters();
-        assignNodesToClusters(centers, nodes);
+        assignNodesToClusters(centers, clusters, nodes);
 
         return clusters;
     }

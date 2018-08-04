@@ -8,6 +8,7 @@ public class Clusters {
 
     private List<TreeMap<Double, Integer>> clusters;
 
+
     public Clusters(int count) {
         clusters = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
@@ -26,7 +27,7 @@ public class Clusters {
     }
 
     public void addNodeToCluster(int cluster, int node, double distance) {
-        getClusters().get(cluster).put(distance, node);
+        clusters.get(cluster).put(distance, node);
     }
 
     public List<TreeMap<Double, Integer>> getClusters() {

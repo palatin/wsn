@@ -17,4 +17,6 @@ public class ArrayHelper {
         int index = array.indexOf(Collections.max(array));
         return new Pair<>(index, array.get(index));
     }
+
+
 }
